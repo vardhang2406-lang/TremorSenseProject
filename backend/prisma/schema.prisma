@@ -1,0 +1,46 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model user {
+  id String @id @default(uuid())
+  name String 
+  email String @unique 
+  password String
+  cane_id String @unique
+  created_at DateTime @default(now())
+  dashboard_sessions dashboard[]
+  piData_output piData[]
+}
+
+model dashboard {
+  id String @id @default(uuid())
+  fog_episodes_today Int?
+  avg_lead_time Float?
+  steps_today BigInt?
+  gait_stability Int?
+  cues_triggered String?
+  user_id String @unique
+  user user @relation(fields:[user_id],references:[id])
+  created_at DateTime @default(now())
+}
+
+model piData {
+  id String @id @default(uuid())
+  predicted_event Int?
+  event_time String?
+  cues_triggered_inrealtime String?
+  pi_cane_id String @unique
+  user user @relation(fields:[pi_cane_id],references:[cane_id])
+  created_at DateTime @default(now())
+}
