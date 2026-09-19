@@ -5,7 +5,7 @@ app.use(express.json());
 import { prisma } from "./prisma/client.js";
 import Groq from "groq-sdk";
 const groq = new Groq({
-    apiKey: "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"
+    apiKey: "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"
 });
 app.get("/health", async (req, res) => {
     return res.status(200).json({ "msg": "Server is up and running" });
@@ -342,5 +342,5 @@ app.post("/llm_bot", async (req, res) => {
         return res.status(505).json({ "msg": "Internal Server Error", error });
     }
 });
-app.listen(3000);
+app.listen(3004);
 //# sourceMappingURL=index.js.map
