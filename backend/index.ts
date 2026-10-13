@@ -57,7 +57,7 @@ app.post("/signin",async(req:Request,res:Response):Promise<any>=>{
         if (email){
             const checkPassword= await bcrypt.compare(password,response!.password)
             if(checkPassword){
-                return res.status(201).json({"msg":"Sigin successful","id":response?.id})
+                return res.status(201).json({"msg":"Signin successful","id":response?.id})
             }
             else{
                 return res.status(402).json({"msg":"Password is incorrect"})
