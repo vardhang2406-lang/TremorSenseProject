@@ -8,7 +8,7 @@ import { findNextToken } from "typescript/unstable/ast"
 import Groq from "groq-sdk"
 
 const groq = new Groq({
-    apiKey:"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"
+    apiKey:""
 })
 
 app.get("/health",async (req:Request,res:Response):Promise<any>=>{
